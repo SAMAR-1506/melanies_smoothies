@@ -1,5 +1,6 @@
 # Import python packages
 import streamlit as st
+import requests
 # from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
@@ -28,7 +29,6 @@ ingredients_list = st.multiselect(
 )
 
 #New Section added to diaplay smoothiefroot nutrition informations.
-import requests  
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/Watermelon)")  
 st.text(smoothiefroot_response.json())
 st_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
